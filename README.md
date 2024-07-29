@@ -45,6 +45,13 @@ from ultralytics import YOLOv10
 model = YOLOv10('yolov10x.pt')
 model.train(data='dianwang.yaml', epochs=500, batch=16, imgsz=640, device=0)
 ```
+### To val:
+```
+from ultralytics import YOLO
+model = YOLO('./runs/detect/train/weights/best.pt')
+source = './datasets/data/images/val'
+model.val(source=source)
+```
 
 ### To test:
 ```
@@ -52,6 +59,6 @@ from ultralytics import YOLOv10
 
 # model = YOLOv10.from_pretrained('./yolov10x')
 model = YOLOv10('./runs/detect/train/weights/best.pt')
-source = './datasets/data/images/val'
-model.predict(source=source, save=True)
+source = './datasets/data/images/test'
+model.predict(source=source, save=True， save_txt=True)
 ```
